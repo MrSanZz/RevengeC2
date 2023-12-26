@@ -2,7 +2,7 @@
 <p align="center">
 <img src="https://img.shields.io/badge/build-MrSanZz-badge?style=flat-square&logo=bitcoin&logoColor=yellow&label=Author&labelColor=grey&color=yellow"><br><br>
 <img width="720" height="540" src="https://kosred.com/a/leunoo.png"><br>
-<font family='sans-serif'>A New C2 Made By Me!, And Has Good Performance with 6 Method Inside.</font><br>
+<font family='sans-serif'>A New C2 Made By Me!, And Has Good Performance with 8 Method Inside.</font><br>
 
 <strong>#How To Install</strong>
 <details open>
